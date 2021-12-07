@@ -80,7 +80,7 @@ class StudentControllerTest {
 
     @Test
     public void createStudent_success() throws Exception{
-        StudentDTO student = StudentDTO.builder().id(4L).name("Panchito Lopez").age(25).build();
+        StudentDTO student = StudentDTO.builder().id(4L).name("Panchito Lopez Perez").age(25).build();
 
         Mockito.when(studentService.addStudentToDatabase(student)).thenReturn(student);
 
