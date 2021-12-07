@@ -80,7 +80,7 @@ class StudentControllerTest {
 
     @Test
     public void createStudent_success() throws Exception{
-        StudentDTO student = StudentDTO.builder().id(4L).name("Choriflito Lopez").age(25).build();
+        StudentDTO student = StudentDTO.builder().id(4L).name("Panchito Lopez").age(25).build();
 
         Mockito.when(studentService.addStudentToDatabase(student)).thenReturn(student);
 
@@ -92,7 +92,7 @@ class StudentControllerTest {
         mockMvc.perform(mockRequest)
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$", notNullValue()))
-                .andExpect(jsonPath("$.name", is("Choriflito Lopez")));
+                .andExpect(jsonPath("$.name", is("Panchito Lopez")));
     }
 
     @Test
