@@ -74,7 +74,7 @@ class StudentControllerTest {
                 .andExpect(status().isNotFound())
                 .andExpect(result -> assertTrue("",
                                                 result.getResolvedException() instanceof StudentNotFoundException))
-                .andExpect(result -> assertEquals("", "Student with ID " + nonExistentStudentId + " does not exist.",
+                .andExpect(result -> assertEquals("", "Student with IDss " + nonExistentStudentId + " does not exist.",
                                                   result.getResolvedException().getMessage()));
     }
 
