@@ -92,7 +92,7 @@ class StudentControllerTest {
         mockMvc.perform(mockRequest)
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$", notNullValue()))
-                .andExpect(jsonPath("$.name", is("Panchito Lopez")));
+                .andExpect(jsonPath("$.name", is("Panchito Lopez Perez")));
     }
 
     @Test
