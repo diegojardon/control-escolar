@@ -57,7 +57,6 @@ public class StudentServiceImpl implements StudentService{
     }
 
     private Student convertToEntity(StudentDTO studentDTO){
-        Student student = modelMapper.map(studentDTO, Student.class);
-        return student;
+        return modelMapper.map(studentDTO, Student.class);
     }
 }
