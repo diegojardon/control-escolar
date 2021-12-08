@@ -1,6 +1,5 @@
 package mx.schooladmin.studentservices.service;
 
-import mx.schooladmin.studentservices.model.Student;
 import mx.schooladmin.studentservices.model.StudentDTO;
 
 import java.util.List;

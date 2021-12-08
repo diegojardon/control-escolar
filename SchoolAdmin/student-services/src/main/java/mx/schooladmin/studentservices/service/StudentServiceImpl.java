@@ -1,6 +1,5 @@
 package mx.schooladmin.studentservices.service;
 
-import mx.schooladmin.studentservices.exception.StudentNotFoundException;
 import mx.schooladmin.studentservices.model.Student;
 import mx.schooladmin.studentservices.model.StudentDTO;
 import mx.schooladmin.studentservices.repository.StudentRepository;
@@ -24,8 +23,7 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public List<StudentDTO> getStudentsFromDatabase() {
         List<Student> students = studentRepository.findAll();
-        List<StudentDTO> studentsDTO = students.stream().map(student -> convertToDto(student)).collect(Collectors.toList());
-        return studentsDTO;
+        return students.stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
     @Override
@@ -34,8 +32,7 @@ public class StudentServiceImpl implements StudentService{
         if(optionalStudent.isEmpty())
             return null;
 
-        StudentDTO studentDTO = convertToDto(optionalStudent.get());
-        return studentDTO;
+        return convertToDto(optionalStudent.get());
     }
 
     @Override
@@ -56,8 +53,7 @@ public class StudentServiceImpl implements StudentService{
     }
 
     private StudentDTO convertToDto(Student post) {
-        StudentDTO studentDTO = modelMapper.map(post, StudentDTO.class);
-        return studentDTO;
+        return modelMapper.map(post, StudentDTO.class);
     }
 
     private Student convertToEntity(StudentDTO studentDTO){
