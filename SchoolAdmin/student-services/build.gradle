@@ -3,6 +3,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id "org.sonarqube" version "3.3"
+	id 'jacoco'
 }
 
 group = 'mx.school-admin'
@@ -36,10 +37,17 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
 }
 
 sonarqube {
 	properties {
 		property "sonar.projectKey", "SchoolAdmin"
+	}
+}
+
+jacocoTestReport {
+	reports {
+		xml.required = true
 	}
 }
