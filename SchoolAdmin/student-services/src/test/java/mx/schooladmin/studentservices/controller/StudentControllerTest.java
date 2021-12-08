@@ -3,7 +3,6 @@ package mx.schooladmin.studentservices.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import mx.schooladmin.studentservices.exception.StudentNotFoundException;
 import mx.schooladmin.studentservices.model.StudentDTO;
-import mx.schooladmin.studentservices.repository.StudentRepository;
 import mx.schooladmin.studentservices.service.StudentService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -41,7 +40,7 @@ class StudentControllerTest {
     StudentDTO STUDENT_3 = new StudentDTO(3L, "Juan Perez", 15);
 
     @Test
-    public void getAllStudents_success() throws Exception {
+    void getAllStudents_success() throws Exception {
         List<StudentDTO> studentList = new ArrayList<>(Arrays.asList(STUDENT_1, STUDENT_2, STUDENT_3));
         Mockito.when(studentService.getStudentsFromDatabase()).thenReturn(studentList);
 
@@ -52,7 +51,7 @@ class StudentControllerTest {
     }
 
     @Test
-    public void getStudentById_success() throws Exception {
+    void getStudentById_success() throws Exception {
         Mockito.when(studentService.getStudentByIdFromDatabase(STUDENT_2.getId())).thenReturn(STUDENT_2);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/student/2").contentType(MediaType.APPLICATION_JSON))
@@ -62,7 +61,7 @@ class StudentControllerTest {
     }
 
     @Test
-    public void getStudentById_studentNotFound() throws Exception{
+    void getStudentById_studentNotFound() throws Exception{
         Long nonExistentStudentId = 5L;
 
         Mockito.when(studentService.getStudentByIdFromDatabase(nonExistentStudentId)).thenReturn(null);
@@ -79,7 +78,7 @@ class StudentControllerTest {
     }
 
     @Test
-    public void createStudent_success() throws Exception{
+    void createStudent_success() throws Exception{
         StudentDTO student = StudentDTO.builder().id(4L).name("Panchito Lopez Perez").age(25).build();
 
         Mockito.when(studentService.addStudentToDatabase(student)).thenReturn(student);
@@ -96,7 +95,7 @@ class StudentControllerTest {
     }
 
     @Test
-    public void updateStudentAge_success() throws Exception{
+    void updateStudentAge_success() throws Exception{
         final int mockAge = 25;
 
         Mockito.when(studentService.getStudentByIdFromDatabase(STUDENT_1.getId())).thenReturn(STUDENT_1);
@@ -110,7 +109,7 @@ class StudentControllerTest {
     }
 
     @Test
-    public void updateStudentAge_studentNotFound() throws Exception{
+    void updateStudentAge_studentNotFound() throws Exception{
         Long nonExistentStudentId = 5L;
 
         Mockito.when(studentService.getStudentByIdFromDatabase(nonExistentStudentId)).thenReturn(null);
@@ -127,7 +126,7 @@ class StudentControllerTest {
     }
 
     @Test
-    public void deleteStudent_success() throws Exception{
+    void deleteStudent_success() throws Exception{
 
         mockMvc.perform(MockMvcRequestBuilders.delete("/student/1").contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent());
