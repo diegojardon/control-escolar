@@ -1,6 +1,7 @@
 package mx.schooladmin.studentservices.model;
 
 import lombok.*;
+import mx.schooladmin.studentservices.config.Generated;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Generated
 public class Student {
 
     @Id

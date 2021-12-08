@@ -1,5 +1,6 @@
 package mx.schooladmin.studentservices.service;
 
+import mx.schooladmin.studentservices.config.Generated;
 import mx.schooladmin.studentservices.model.Student;
 import mx.schooladmin.studentservices.model.StudentDTO;
 import mx.schooladmin.studentservices.repository.StudentRepository;
@@ -11,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Generated
 @Service
 public class StudentServiceImpl implements StudentService{
 

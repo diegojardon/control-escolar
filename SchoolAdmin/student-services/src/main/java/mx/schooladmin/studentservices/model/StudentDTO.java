@@ -5,10 +5,10 @@ import lombok.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
+@Generated
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class StudentDTO {
 
     private Long id;
